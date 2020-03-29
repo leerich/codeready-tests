@@ -1,0 +1,90 @@
+{
+  "workspaceConfig": {
+    "defaultEnv": "default",
+    "projects": [],
+    "commands": [
+      {
+        "commandLine": "cd ${current.project.path} && python3.8 main.py",
+        "name": "run",
+        "type": "custom",
+        "attributes": {
+          "goal": "Run"
+        }
+      },
+      {
+        "commandLine": "cd ${current.project.path} && pip install -r requirements.txt",
+        "name": "build",
+        "type": "custom",
+        "attributes": {
+          "goal": "Build"
+        }
+      }
+    ],
+    "environments": {
+      "default": {
+        "recipe": {
+          "type": "dockerimage",
+          "content": "xxx.com:5000/codeready-workspaces/stacks-python38-ansible"
+        },
+        "machines": {
+          "dev-machine": {
+            "servers": {
+              "8080/tcp": {
+                "protocol": "http",
+                "port": "8080",
+                "attributes": {}
+              },
+              "8000/tcp": {
+               "protocol": "http",
+                "port": "8000",
+                "attributes": {}
+              },
+              "flaskapp": {
+                "protocol": "http",
+                "port": "5000",
+                "attributes": {}
+              }
+            },
+            "volumes": {},
+            "installers": [
+              "org.eclipse.che.exec",
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.ls.python"
+            ],
+            "env": {},
+            "attributes": {
+              "memoryLimitBytes": "2147483648"
+            }
+          }
+        }
+      }
+    },
+    "name": "default",
+    "attributes": {},
+    "links": []
+  },
+  "components": [
+    {
+      "version": "7.4",
+      "name": "RHEL"
+    },
+    {
+      "version": "10.0.1",
+      "name": "PIP"
+    },
+    {
+      "version": "3.8.0",
+      "name": "Python"
+    }
+  ],
+  "creator": "a6230dec-2992-469e-8088-bb23e704322d",
+  "tags": [
+    "pip",
+    "python"
+  ],
+  "description": "Python 3.8 stack And Ansible ",
+  "scope": "general",
+  "name": "Python3.8 And Ansible",
+  "id": "stackeyci66x1yvjdzino"
+}
